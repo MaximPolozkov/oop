@@ -29,6 +29,7 @@ def test_new_product_creation():
     assert product.price == 110000.0
     assert product.quantity == 15
 
+
 def test_new_product_dublicate(sample_product):
     """Проверка обработки дубликата товара"""
     product_data = {"name": "Samsung Galaxy S23 Ultra", "description": "256GB, Серый цвет, 200MP камера, цвет черный", "price": 200000.0, "quantity": 5}
