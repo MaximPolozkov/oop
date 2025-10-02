@@ -36,6 +36,18 @@ class Category:
             products_strings.append(f"{product.name}, {product.price} руб. Остаток: {product.quantity} шт.")
         return products_strings
 
+    @property
+    def product_list(self):
+        """Геттер, чтобы посчитать количество товаров в категории"""
+        return self.__products
+
+    def __str__(self):
+        """Магический метод для вывода в строке общего количества категорий"""
+        count = 0
+        for productions in self.__products:
+            count += productions.quantity
+        return f"{self.name}, количество товаров, {count} шт"
+
 
 if __name__ == "__main__":
     product1 = Product("Samsung Galaxy S23 Ultra", "256GB, Серый цвет, 200MP камера", 180000.0, 5)
@@ -48,11 +60,21 @@ if __name__ == "__main__":
         [product1, product2, product3]
     )
 
+    products = category1.product_list
+    print(products)
+
+
     #print(category1.get_products())
     product4 = Product("55\" QLED 4K", "Фоновая подсветка", 123000.0, 7)
     category1.add_products(product4)
-    #print(category1.add_category())
-    #print(category1.total_categories)
+
+    products = category1.product_list
+
+    print(products)
+    print(product3)
+
+    print(category1.add_category())
+    print(category1.total_categories)
 
     new_product = Product.new_product(
         {"name": "Samsung Galaxy S23 Ultra", "description": "256GB, Серый цвет, 200MP камера", "price": 180000.0,
