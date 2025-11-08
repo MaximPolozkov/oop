@@ -55,10 +55,10 @@ class Product:
         return f'Название продукта: {self.name}, {self.__price} руб. Остаток: {self.quantity}'
 
     def __add__(self, other):
-        """Магический метод дл я вывода продукции"""
+        """Магический метод для вывода продукции"""
         if not isinstance(other, Product):
             raise TypeError(f'Ожидался Product, а получен {type(other).__name__}')
-        return self.price * other.quantity + other.price * other.quantity
+        return self.__price * other.quantity + other.__price * other.quantity
 
 
 if __name__ == "__main__":

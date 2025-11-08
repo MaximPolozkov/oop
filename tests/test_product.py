@@ -52,6 +52,7 @@ def test_product_add_method(sample_product):
     product2 = Product("iPhone 14 Pro", "256GB, Space Black", 190000.0, 3)
     assert product1 + product2
 
+
 def test_product_add_type_error(sample_product):
     """Проверяет, что метод __add__ вызывает TypeError, если складывать с не Product."""
     with pytest.raises(TypeError):
