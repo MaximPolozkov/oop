@@ -25,7 +25,7 @@ def test_adding_products_to_category(sample_category, sample_product):
     """Проверяет добавление товаров в категорию."""
     sample_category.add_products(sample_product)
     assert len(sample_category.get_products()) == 1
-    assert Category.total_products == sample_product.quantity
+    assert Category.total_products == 1
 
 
 def test_products_info_property(sample_category, sample_product):

@@ -8,14 +8,15 @@ class Category:
 
     def __init__(self, name, description, products=None):
         """Инициализируем объект категории"""
+        self.products = None
         self.name = name
         self.description = description
         self.__products = products if products is not None else []
 
-    def add_products(self, production):
+    def add_products(self, production: Product):
         if isinstance(production, Product):
             self.__products.append(production)
-            Category.total_products += production.quantity
+            Category.total_products += 1
         else:
             raise ValueError("Можно добавлять только объект класса Product")
 
@@ -93,3 +94,4 @@ if __name__ == "__main__":
     print(new_product.price)
 # Category.total_categories += 1
 # Category.total_products += len(__products)
+

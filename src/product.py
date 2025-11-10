@@ -56,9 +56,9 @@ class Product:
 
     def __add__(self, other):
         """Магический метод для вывода продукции"""
-        if not isinstance(other, Product):
-            raise TypeError(f'Ожидался Product, а получен {type(other).__name__}')
-        return self.__price * other.quantity + other.__price * other.quantity
+        if type(other) is Product:
+            return self.__price * other.quantity + other.__price * other.quantity
+        raise TypeError
 
 
 if __name__ == "__main__":
@@ -67,3 +67,7 @@ if __name__ == "__main__":
     product1 = Product("Samsung Galaxy S23 Ultra", "256GB, Серый цвет, 200MP камера", 180000.0, 5)
     product2 = Product("iPhone 14 Pro", "256GB, Space Black", 190000.0, 3)
     print(product1 + product2)
+
+    product1 + 1
+
+
