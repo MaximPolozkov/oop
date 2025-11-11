@@ -74,7 +74,7 @@ if __name__ == "__main__":
     print(products)
     print(product3)
 
-    print(category1.add_category())
+    print(category1.add_category)
     print(category1.total_categories)
 
     new_product = Product.new_product(
