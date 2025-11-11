@@ -1,4 +1,5 @@
 from category import Category
+from product import Product
 
 
 def test_category_initialization(sample_category):
@@ -48,3 +49,23 @@ def test_category_str_method(sample_category, sample_product):
     """Проверяет корректность работы метода __str__."""
     sample_category.add_products(sample_product)
     assert str(sample_category) == f"{sample_category.name}, количество товаров, {sample_product.quantity} шт"
+
+
+def test_middle_price_empty_category(sample_category):
+    """Проверяет, что для пустой категории возвращается 0."""
+    assert sample_category.middle_price() == 0
+
+
+def test_middle_price_single_product(sample_category, sample_product):
+    """Проверяет, что для категории с одним товаром возвращается его цена."""
+    sample_category.add_products(sample_product)
+    assert sample_category.middle_price() == sample_product.price
+
+
+def test_middle_price_multiple_products(sample_category, sample_product):
+    """Проверяет, что для категории с несколькими товарами возвращается средняя цена."""
+    product2 = Product("Xiaomi Redmi Note 11", "1024GB, Синий", 31000.0, 14)
+    sample_category.add_products(sample_product)
+    sample_category.add_products(product2)
+    expected_price = (sample_product.price + product2.price) / 2
+    assert sample_category.middle_price() == expected_price

@@ -57,3 +57,21 @@ def test_product_add_type_error(sample_product):
     """Проверяет, что метод __add__ вызывает TypeError, если складывать с не Product."""
     with pytest.raises(TypeError):
         sample_product + "string"
+
+
+def test_product_initialization_zero_quantity():
+    """Проверяет, что при инициализации товара с нулевым количеством выбрасывается исключение ValueError."""
+    with pytest.raises(ValueError) as excinfo:
+        Product("Xiaomi Redmi Note 11", "1024GB, Синий", 31000.0, 0)
+    assert "Товар с нулевым количеством не может быть добавлен" in str(excinfo.value)
+
+
+def test_product_initialization_positive_quantity():
+    """Проверяет, что при инициализации товара с положительным колличеством, товар создается корректно"""
+    product = Product("Xiaomi Redmi Note 11", "1024GB, Синий", 31000.0, 14)
+    assert product.quantity == 14
+
+
+
+
+

@@ -49,6 +49,13 @@ class Category:
             count += productions.quantity
         return f"{self.name}, количество товаров, {count} шт"
 
+    def middle_price(self):
+        """Средняя цена за товар"""
+        try:
+            return sum(product.price for product in self.__products) / len(self.__products)
+        except ZeroDivisionError:
+            return 0
+
 
 if __name__ == "__main__":
     product1 = Product("Samsung Galaxy S23 Ultra", "256GB, Серый цвет, 200MP камера", 180000.0, 5)
