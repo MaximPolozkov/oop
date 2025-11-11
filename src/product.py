@@ -1,4 +1,8 @@
-class Product:
+from base_product import BaseProduct
+from print_mixin import PrintMixin
+
+
+class Product(BaseProduct, PrintMixin):
     """Класс предоставляющий товар"""
 
     def __init__(self, name, description, price, quantity):
@@ -7,6 +11,7 @@ class Product:
         self.description = description
         self.__price = price
         self.quantity = quantity
+        super().__init__()
 
     @property
     def price(self):
@@ -68,6 +73,6 @@ if __name__ == "__main__":
     product2 = Product("iPhone 14 Pro", "256GB, Space Black", 190000.0, 3)
     print(product1 + product2)
 
-    product1 + 1
+    #product1 + 1
 
 
